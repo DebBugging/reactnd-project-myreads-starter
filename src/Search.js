@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import Book from './Book';
 
 class Search extends Component {
   render() {
