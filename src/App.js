@@ -14,6 +14,7 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         <Main />
+        <Search />
       </div>
     )
   }
