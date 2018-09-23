@@ -13,7 +13,15 @@ class Main extends Component {
       this.setState({ library: library });
     });
   }
+  //Make the books change shelves when clicking through the Select.
+  changeShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf);
+    BooksAPI.getAll().then(library => {
+      this.setState({ library: library });
+    }); 
+  }
 
+  //Set the props to be used in Shelf.js
   render() {
     return (
       <div className="list-books">
@@ -22,7 +30,9 @@ class Main extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <Shelf library={this.state.library} />
+            <Shelf library={this.state.library} 
+            changeShelf= {this.changeShelf}
+            />
           </div>
         </div>
         <div className="open-search">
