@@ -20,9 +20,10 @@ class Search extends Component {
     if (query) {
       BooksAPI.search(query).then(searchBooks => {
         if (searchBooks.error) {
-          this.setState({searchBooks: [] });
+          this.setState({ searchBooks: [] });
+        } else {
+          this.setState({ searchBooks: searchBooks });
         }
-        this.setState({ searchBooks: searchBooks });
       });
     } else {
       this.setState({ searchBooks: [] });
@@ -51,9 +52,9 @@ class Search extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {this.state.searchBooks.map(book => (
-              <li key={book.id}>
-                <Book book={book} />
+            {this.state.searchBooks.map(searchBook => (
+              <li key={searchBook.id}>
+                <Book book={searchBook} />
               </li>
             ))}
           </ol>
