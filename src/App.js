@@ -1,32 +1,37 @@
-import React from 'react'
+import React from "react";
 
-import Search from './Search';
+import { Route } from "react-router-dom";
 
-import Main from './Main';
+import Search from "./Search";
+
+import Main from "./Main";
+
 import * as BooksAPI from "./BooksAPI";
 
-import './App.css'
-
+import "./App.css";
 
 class BooksApp extends React.Component {
-    //Make the books change shelves when clicking through the Select.
-    changeShelf = (book, shelf) => {
-      BooksAPI.update(book, shelf);
-      BooksAPI.getAll().then(library => {
-        this.setState({ library: library });
-      }); 
-    }
+  //Make the books change shelves when clicking through the Select.
+  changeShelf = (book, shelf) => {
+    BooksAPI.update(book, shelf);
+    BooksAPI.getAll().then(library => {
+      this.setState({ library: library });
+    });
+  };
 
-//Render the HTML
+  //Render the HTML
   render() {
     return (
       <div className="app">
-        <Main />
-        <Search 
-        changeShelf= {this.changeShelf}/>
+        <Route exact path="/" render={() => <Main />} />
+        <Route
+          exact
+          path="/search"
+          render={() => <Search changeShelf={this.changeShelf} />}
+        />
       </div>
-    )
+    );
   }
 }
 
-export default BooksApp
+export default BooksApp;
