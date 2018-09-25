@@ -11,6 +11,17 @@ import * as BooksAPI from "./BooksAPI";
 import "./App.css";
 
 class BooksApp extends React.Component {
+  //Add state for fetching Books
+  state = {
+    library: []
+  };
+    //Fetch books from the BooksAPI
+    componentDidMount() {
+      BooksAPI.getAll().then(library => {
+        this.setState({ library: library });
+      });
+    }
+
   //Make the books change shelves when clicking through the Select.
   changeShelf = (book, shelf) => {
     BooksAPI.update(book, shelf);
@@ -27,7 +38,12 @@ class BooksApp extends React.Component {
         <Route
           exact
           path="/search"
-          render={() => <Search changeShelf={this.changeShelf} />}
+          render={() => (
+            <Search
+              library={this.state.library}
+              changeShelf={this.changeShelf}
+            />
+          )}
         />
       </div>
     );

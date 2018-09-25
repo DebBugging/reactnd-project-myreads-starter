@@ -22,8 +22,8 @@ class Main extends Component {
     BooksAPI.update(book, shelf);
     BooksAPI.getAll().then(library => {
       this.setState({ library: library });
-    }); 
-  }
+    });
+  };
 
   //Set the props to be used in Shelf.js
   render() {
@@ -34,15 +34,14 @@ class Main extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <Shelf library={this.state.library} 
-            changeShelf= {this.changeShelf}
+            <Shelf
+              library={this.state.library}
+              changeShelf={this.changeShelf}
             />
           </div>
         </div>
         <div className="open-search">
-          <Link to="/search">
-            Add a book
-          </Link>
+          <Link to="/search">Add a book</Link>
         </div>
       </div>
     );
