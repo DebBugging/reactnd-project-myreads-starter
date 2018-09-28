@@ -3,11 +3,13 @@ import Book from "./Book";
 
 class Shelf extends Component {
   render() {
-    console.log(this.props.library);
+  //Array of shelves
+  const bookShelfTitle = ["Currently Reading", "Want to Read", "Read"]
+
     return (
       <div>
         <div className="bookshelf">
-          <h2 className="bookshelf-title">Currently Reading</h2>
+          <h2 className="bookshelf-title">{bookShelfTitle}</h2>
           <div className="bookshelf-books">
             <ol className="books-grid">
               {this.props.library

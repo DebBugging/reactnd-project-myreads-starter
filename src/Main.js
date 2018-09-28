@@ -7,24 +7,7 @@ import Shelf from "./Shelf";
 import * as BooksAPI from "./BooksAPI";
 
 class Main extends Component {
-  //Add state for fetching Books
-  state = {
-    library: []
-  };
-  //Fetch books from the BooksAPI
-  componentDidMount() {
-    BooksAPI.getAll().then(library => {
-      this.setState({ library: library });
-    });
-  }
-  //Make the books change shelves when clicking through the Select.
-  changeShelf = (book, shelf) => {
-    BooksAPI.update(book, shelf);
-    BooksAPI.getAll().then(library => {
-      this.setState({ library: library });
-    });
-  };
-
+                                
   //Set the props to be used in Shelf.js
   render() {
     return (
@@ -35,8 +18,8 @@ class Main extends Component {
         <div className="list-books-content">
           <div>
             <Shelf
-              library={this.state.library}
-              changeShelf={this.changeShelf}
+            library={this.props.library}
+            changeShelf={this.props.changeShelf}
             />
           </div>
         </div>
