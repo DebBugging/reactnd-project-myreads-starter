@@ -6,6 +6,11 @@ body {
 }
 body, .app {
   background: white;
+  /* Background from PixaBay
+  https://www.pexels.com/photo/full-frame-shot-of-snowflakes-326240/ */
+  background-image: url(Images/background.jpg);
+  background-size: cover;
+  font-family: 'Bevan', cursive;
 }
 
 /* main page */
@@ -18,7 +23,8 @@ body, .app {
 .list-books-title h1 {
   font-weight: 400;
   margin: 0;
-  color: white;
+  color: #f0ecec;
+  text-shadow: 1px 1px 2px #1e2027;
 }
 
 .list-books-content {
@@ -37,7 +43,10 @@ body, .app {
 }
 
 .bookshelf-title {
-  border-bottom: 1px solid #dedede;
+  font-size: 2em;
+  text-shadow: .5px .5px .8px #4e5f96;
+  padding-left: 5%;
+  border-bottom: 1px solid #4e5f96;
 }
 .bookshelf-books {
   text-align: center;
@@ -122,15 +131,15 @@ body, .app {
 .book {
   width: 140px;
 }
-.book-title,
+
+.book-title {
+  font-size: 0.9em;
+  margin-top: 10px;
+  text-shadow: 1px 1px 2px #4e5f96; 
+}
 .book-authors {
   font-size: 0.8em;
-}
-.book-title {
-  margin-top: 10px;
-}
-.book-authors {
-  color: #999;
+  color: #1e2027;
 }
 
 .book-top {
