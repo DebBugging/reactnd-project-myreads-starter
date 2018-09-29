@@ -4,11 +4,7 @@ import { Link } from "react-router-dom";
 
 import Shelf from "./Shelf";
 
-import * as BooksAPI from "./BooksAPI";
-
 class Main extends Component {
-                                
-  //Set the props to be used in Shelf.js
   render() {
     return (
       <div className="list-books">
@@ -18,8 +14,25 @@ class Main extends Component {
         <div className="list-books-content">
           <div>
             <Shelf
-            library={this.props.library}
-            changeShelf={this.props.changeShelf}
+              name={"Currently Reading"}
+              books={this.props.library.filter(
+                book => book.shelf === "currentlyReading"
+              )}
+              changeShelf={this.props.changeShelf}
+            />
+            <Shelf
+              name={"Want to Read"}
+              books={this.props.library.filter(
+                book => book.shelf === "wantToRead"
+              )}
+              changeShelf={this.props.changeShelf}
+            />
+            <Shelf
+              name={"Read"}
+              books={this.props.library.filter(
+                book => book.shelf === "read"
+              )}
+              changeShelf={this.props.changeShelf}
             />
           </div>
         </div>
